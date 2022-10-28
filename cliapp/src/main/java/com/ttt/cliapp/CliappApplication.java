@@ -1,5 +1,6 @@
 package com.ttt.cliapp;
 
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
@@ -14,6 +15,7 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class CliappApplication {
 
+	@NonNull
 	private final LogMessageHandler logMessageHandler;
 
 	public static void main(String[] args) {
@@ -30,8 +32,5 @@ public class CliappApplication {
 		if (Client.execute(new TdApi.SetLogStream(new TdApi.LogStreamFile("tdlib.log", 1 << 27, false))) instanceof TdApi.Error) {
 			throw new IOError(new IOException("Write access to the current directory is required"));
 		}
-
 	}
-
-
 }
