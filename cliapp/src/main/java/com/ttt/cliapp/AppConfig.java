@@ -1,5 +1,6 @@
 package com.ttt.cliapp;
 
+import com.ttt.cliapp.handler.UpdateHandler;
 import lombok.NonNull;
 import org.drinkless.tdlib.Client;
 import org.springframework.context.annotation.Bean;

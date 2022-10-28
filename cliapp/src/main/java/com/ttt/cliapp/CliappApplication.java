@@ -1,5 +1,6 @@
 package com.ttt.cliapp;
 
+import com.ttt.cliapp.handler.LogMessageHandler;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.drinkless.tdlib.Client;

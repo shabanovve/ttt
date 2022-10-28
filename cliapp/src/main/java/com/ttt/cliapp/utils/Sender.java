@@ -1,4 +1,4 @@
-package com.ttt.cliapp;
+package com.ttt.cliapp.utils;
 
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
