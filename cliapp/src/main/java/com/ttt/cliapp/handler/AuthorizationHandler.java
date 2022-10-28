@@ -1,5 +1,6 @@
-package com.ttt.cliapp;
+package com.ttt.cliapp.handler;
 
+import com.ttt.cliapp.utils.Sender;
 import lombok.RequiredArgsConstructor;
 import org.drinkless.tdlib.TdApi;
 import org.springframework.stereotype.Component;
@@ -15,8 +16,8 @@ public class AuthorizationHandler {
         request.databaseDirectory = "tdlib";
         request.useMessageDatabase = true;
         request.useSecretChats = true;
-        request.apiId = 699281;
-        request.apiHash = "c638b3215d18e64f42374fcf43f48e69";
+        request.apiId = 0;
+        request.apiHash = "0";
         request.systemLanguageCode = "en";
         request.deviceModel = "Desktop";
         request.applicationVersion = "1.0";

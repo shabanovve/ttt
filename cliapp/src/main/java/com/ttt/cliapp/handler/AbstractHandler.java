@@ -1,4 +1,4 @@
-package com.ttt.cliapp;
+package com.ttt.cliapp.handler;
 
 @SuppressWarnings("unused")
 public abstract class AbstractHandler {

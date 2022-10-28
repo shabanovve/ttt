@@ -1,4 +1,4 @@
-package com.ttt.cliapp;
+package com.ttt.cliapp.handler;
 
 import org.drinkless.tdlib.Client;
 import org.springframework.stereotype.Component;

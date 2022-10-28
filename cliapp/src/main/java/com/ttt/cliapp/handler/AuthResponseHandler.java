@@ -1,4 +1,4 @@
-package com.ttt.cliapp;
+package com.ttt.cliapp.handler;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
