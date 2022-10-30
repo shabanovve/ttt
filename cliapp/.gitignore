@@ -3,7 +3,6 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 spring-shell.log
-td/
 
 ### STS ###
 .apt_generated
@@ -32,4 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+###############
 /telegram.api/td/
+application*.yaml

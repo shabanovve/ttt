@@ -1,5 +1,6 @@
 package com.ttt.cliapp;
 
+import com.ttt.cliapp.config.ApiConfig;
 import com.ttt.cliapp.handler.LogMessageHandler;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -7,6 +8,7 @@ import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 import javax.annotation.PostConstruct;
 import java.io.IOError;
@@ -14,6 +16,7 @@ import java.io.IOException;
 
 @SpringBootApplication
 @RequiredArgsConstructor
+@EnableConfigurationProperties(ApiConfig.class)
 public class CliappApplication {
 
 	@NonNull
