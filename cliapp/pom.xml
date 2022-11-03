@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ttt</groupId>
-	<artifactId>cliapp</artifactId>
+	<artifactId>app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>cliapp</name>
+	<name>app</name>
 	<description>catch the script</description>
 	<properties>
 		<java.version>17</java.version>
