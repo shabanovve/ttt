@@ -1,15 +1,13 @@
 package com.ttt.app;
 
+import javafx.application.Application;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @RequiredArgsConstructor
 public class AppApplication {
-
 	public static void main(String[] args) {
-		SpringApplication.run(AppApplication.class, args);
+		Application.launch(AppFX.class);
 	}
-
 }
