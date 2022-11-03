@@ -1,4 +1,4 @@
-package com.ttt.cliapp;
+package com.ttt.app;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
