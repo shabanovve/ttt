@@ -15,6 +15,7 @@ public class AppFX extends Application {
     }
     @Override
     public void start(Stage stage) {
+        applicationContext.getBeanFactory().registerSingleton("stage", stage);
         applicationContext.publishEvent(new StageReadyEvent(stage));
     }
     @Override
@@ -25,10 +26,6 @@ public class AppFX extends Application {
     static class StageReadyEvent extends ApplicationEvent {
         public StageReadyEvent(Stage stage) {
             super(stage);
-        }
-
-        public Stage getStage() {
-            return ((Stage) getSource());
         }
     }
 }
