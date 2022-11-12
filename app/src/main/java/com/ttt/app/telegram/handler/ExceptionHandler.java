@@ -13,5 +13,6 @@ public class ExceptionHandler implements Client.ExceptionHandler{
     @Override
     public void onException(Throwable throwable) {
        log.error(throwable);
+       throwable.printStackTrace();
     }
 }
