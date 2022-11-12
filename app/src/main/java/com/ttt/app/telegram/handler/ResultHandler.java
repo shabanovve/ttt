@@ -1,19 +1,29 @@
 package com.ttt.app.telegram.handler;
 
-import com.ttt.app.view.event.MessageEvent;
-import javafx.application.Platform;
+import com.ttt.app.telegram.event.UpdateAuthorizationStateEvent;
 import lombok.RequiredArgsConstructor;
 import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
-import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor
 @Component
-public class ResultHandler implements Client.ResultHandler{
-    private final ApplicationContext context;
+public class ResultHandler implements Client.ResultHandler {
+    private final ConfigurableApplicationContext context;
+
     @Override
     public void onResult(TdApi.Object object) {
-        Platform.runLater(() -> context.publishEvent(new MessageEvent("onResult")));
+        if (object instanceof TdApi.Update) {
+            switch (object.getConstructor()) {
+                case TdApi.UpdateAuthorizationState.CONSTRUCTOR -> {
+                    TdApi.AuthorizationState authorizationState =
+                            ((TdApi.UpdateAuthorizationState) object).authorizationState;
+                    context.publishEvent(new UpdateAuthorizationStateEvent(authorizationState));
+                }
+            }
+        } else {
+            throw new IllegalStateException("Cannot handle " + object.getClass().getCanonicalName());
+        }
     }
 }
