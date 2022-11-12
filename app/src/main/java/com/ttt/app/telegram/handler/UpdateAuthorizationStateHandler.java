@@ -50,11 +50,11 @@ public class UpdateAuthorizationStateHandler {
                 latch.await();
                 String phoneNumber = context.getBean(PhoneNumber.class).value();
                 log.info("Entered phone number: " + phoneNumber);
-//                context.getBean(Client.class)
-//                        .send(
-//                                new TdApi.SetAuthenticationPhoneNumber(phoneNumber, null),
-//                                authorizationRequestHandler
-//                        );
+                context.getBean(Client.class)
+                        .send(
+                                new TdApi.SetAuthenticationPhoneNumber(phoneNumber, null),
+                                authorizationRequestHandler
+                        );
             }
         }
     }
