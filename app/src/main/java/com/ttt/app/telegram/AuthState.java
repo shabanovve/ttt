@@ -11,4 +11,5 @@ import org.springframework.stereotype.Component;
 public class AuthState {
     private TdApi.AuthorizationState state;
     private String phoneNumber;
+    private String authCode;
 }
