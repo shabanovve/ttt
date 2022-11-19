@@ -3,6 +3,7 @@ package com.ttt.app.telegram.handler;
 
 import com.ttt.app.config.ApiConfig;
 import com.ttt.app.telegram.AuthState;
+import com.ttt.app.telegram.event.GetAuthCodeEvent;
 import com.ttt.app.telegram.event.GetPhoneNumberEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
@@ -49,13 +50,20 @@ public class UpdateAuthorizationStateHandler {
                 latch.await();
                 String phoneNumber = authState.getPhoneNumber();
                 log.info("Entered phone number: " + phoneNumber);
-                context.getBean(Client.class)
-                        .send(
-                                new TdApi.SetAuthenticationPhoneNumber(phoneNumber, null),
-                                authorizationRequestHandler
-                        );
+                sendRequest(new TdApi.SetAuthenticationPhoneNumber(phoneNumber, null));
+                authState.setPhoneNumber("");
+            }
+            case TdApi.AuthorizationStateWaitCode.CONSTRUCTOR -> {
+                CountDownLatch latch = new CountDownLatch(1);
+                context.publishEvent(new GetAuthCodeEvent(latch));
+                latch.await();
+                sendRequest(new TdApi.CheckAuthenticationCode(authState.getAuthCode()));
+                authState.setAuthCode("");
             }
         }
+    }
+    private void sendRequest(TdApi.Function<TdApi.Ok> function) {
+        context.getBean(Client.class).send(function, authorizationRequestHandler);
     }
 
 }
