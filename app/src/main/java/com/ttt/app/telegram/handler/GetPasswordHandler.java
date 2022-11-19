@@ -18,7 +18,8 @@ public class GetPasswordHandler extends AbstractStringDialogHandler
         handle(
                 "Enter password",
                 result -> authState.setPassword(result.get()),
-                event.getLatch()
+                event.getLatch(),
+                true
         );
     }
 }

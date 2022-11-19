@@ -11,10 +11,17 @@ import java.util.function.Consumer;
 @Log4j2
 public abstract class AbstractStringDialogHandler {
     private final ReentrantLock lock = new ReentrantLock();
-    @SneakyThrows
+
     protected void handle(
             String title, Consumer<AtomicReference<String>> changeStateConsumer,
             CountDownLatch latch
+    ) {
+        handle(title, changeStateConsumer, latch, false);
+    }
+    @SneakyThrows
+    protected void handle(
+            String title, Consumer<AtomicReference<String>> changeStateConsumer,
+            CountDownLatch latch, boolean isPassword
     ) {
         if (!lock.tryLock()) {
             log.info("Skip showing dialog " + title);
@@ -23,7 +30,7 @@ public abstract class AbstractStringDialogHandler {
 
         try {
             AtomicReference<String> result = new AtomicReference<>();
-            StringDialog.createAndGetLatch(title, result).await();
+            StringDialog.createAndGetLatch(title, result, isPassword).await();
             changeStateConsumer.accept(result);
         } finally {
             latch.countDown();
