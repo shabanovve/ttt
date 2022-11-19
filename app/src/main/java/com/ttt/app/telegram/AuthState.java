@@ -12,4 +12,5 @@ public class AuthState {
     private TdApi.AuthorizationState state;
     private String phoneNumber;
     private String authCode;
+    private String password;
 }
