@@ -1,7 +1,7 @@
 package com.ttt.app.telegram.handler;
 
 
-import com.ttt.app.config.ApiConfig;
+import com.ttt.app.config.TelegramApiConfig;
 import com.ttt.app.telegram.AuthState;
 import com.ttt.app.telegram.event.AuthStateReadyEvent;
 import com.ttt.app.telegram.event.GetAuthCodeEvent;
@@ -24,7 +24,7 @@ import java.util.concurrent.CountDownLatch;
 public class UpdateAuthorizationStateHandler {
     private final ApplicationContext context;
     private final AuthorizationRequestHandler authorizationRequestHandler;
-    private final ApiConfig apiConfig;
+    private final TelegramApiConfig telegramApiConfig;
     private final AuthState authState;
 
     @SneakyThrows
@@ -39,8 +39,8 @@ public class UpdateAuthorizationStateHandler {
                 request.databaseDirectory = "tdlib";
                 request.useMessageDatabase = true;
                 request.useSecretChats = true;
-                request.apiId = apiConfig.getId();
-                request.apiHash = apiConfig.getHash();
+                request.apiId = telegramApiConfig.getId();
+                request.apiHash = telegramApiConfig.getHash();
                 request.systemLanguageCode = "en";
                 request.deviceModel = "Desktop";
                 request.applicationVersion = "1.0";

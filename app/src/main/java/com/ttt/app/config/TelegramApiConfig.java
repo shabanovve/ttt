@@ -6,8 +6,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @Getter
 @Setter
-@ConfigurationProperties(prefix = "api")
-public class ApiConfig {
+@ConfigurationProperties(prefix = "telegram.api")
+public class TelegramApiConfig {
     private int id;
     private String hash;
 }
