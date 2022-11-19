@@ -1,5 +1,6 @@
 package com.ttt.app.view;
 
+import javafx.application.Platform;
 import javafx.scene.control.Label;
 import javafx.scene.text.Font;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +21,6 @@ public class MessageStringView {
         label.setFont(new Font("Arial", 20));
         label.setMinHeight(50);
         label.setMinWidth(100);
-        mainWindow.getVbox().getChildren().addAll(label);
+        Platform.runLater(() -> mainWindow.getVbox().getChildren().addAll(label));
     }
 }
