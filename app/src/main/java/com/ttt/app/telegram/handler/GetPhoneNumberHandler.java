@@ -2,9 +2,7 @@ package com.ttt.app.telegram.handler;
 
 import com.ttt.app.telegram.PhoneNumber;
 import com.ttt.app.telegram.event.GetPhoneNumberEvent;
-import javafx.application.Platform;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextInputDialog;
+import com.ttt.app.view.StringDialog;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -22,21 +20,15 @@ public class GetPhoneNumberHandler implements ApplicationListener<GetPhoneNumber
     @Override
     public void onApplicationEvent(GetPhoneNumberEvent event) {
         CountDownLatch latch = event.getLatch();
+        String title = "Enter phone number";
         AtomicReference<String> result = new AtomicReference<>();
-        Platform.runLater(() -> {
-            do {
-                TextInputDialog dialog = new TextInputDialog();
-                dialog.setTitle("Enter phone number");
-                dialog.setHeaderText(null);
-                dialog.getDialogPane().lookupButton(ButtonType.CANCEL).setDisable(true);
-                dialog.showAndWait().ifPresent(result::set);
-            } while (result.get() == null || result.get().isEmpty());
-            context.getBeanFactory()
-                    .registerSingleton(
-                            "phoneNumber",
-                            new PhoneNumber(result.get())
-                    );
-            latch.countDown();
-        });
+        StringDialog.create(title, result);
+        context.getBeanFactory()
+                .registerSingleton(
+                        "phoneNumber",
+                        new PhoneNumber(result.get())
+                );
+        latch.countDown();
     }
+
 }
