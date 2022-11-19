@@ -2,7 +2,7 @@ package com.ttt.app.telegram.handler;
 
 
 import com.ttt.app.config.ApiConfig;
-import com.ttt.app.telegram.PhoneNumber;
+import com.ttt.app.telegram.AuthState;
 import com.ttt.app.telegram.event.GetPhoneNumberEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
@@ -22,15 +22,14 @@ public class UpdateAuthorizationStateHandler {
     private final ApplicationContext context;
     private final AuthorizationRequestHandler authorizationRequestHandler;
     private final ApiConfig apiConfig;
-    private TdApi.AuthorizationState authorizationState;
-
+    private final AuthState authState;
 
     @SneakyThrows
     public void handle(TdApi.AuthorizationState authorizationState) {
         if (authorizationState != null) {
-            this.authorizationState = authorizationState;
+            authState.setState(authorizationState);
         }
-        switch (this.authorizationState.getConstructor()) {
+        switch (authState.getState().getConstructor()) {
             case TdApi.AuthorizationStateWaitTdlibParameters.CONSTRUCTOR -> {
                 TdApi.SetTdlibParameters request = new TdApi.SetTdlibParameters();
                 request.databaseDirectory = "tdlib";
@@ -48,7 +47,7 @@ public class UpdateAuthorizationStateHandler {
                 CountDownLatch latch = new CountDownLatch(1);
                 context.publishEvent(new GetPhoneNumberEvent(latch));
                 latch.await();
-                String phoneNumber = context.getBean(PhoneNumber.class).value();
+                String phoneNumber = authState.getPhoneNumber();
                 log.info("Entered phone number: " + phoneNumber);
                 context.getBean(Client.class)
                         .send(

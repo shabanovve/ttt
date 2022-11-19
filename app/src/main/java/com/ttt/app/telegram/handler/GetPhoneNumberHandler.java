@@ -1,10 +1,9 @@
 package com.ttt.app.telegram.handler;
 
-import com.ttt.app.telegram.PhoneNumber;
+import com.ttt.app.telegram.AuthState;
 import com.ttt.app.telegram.event.GetPhoneNumberEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationListener;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Component;
 
 
@@ -13,13 +12,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class GetPhoneNumberHandler extends AbstractStringDialogHandler
         implements ApplicationListener<GetPhoneNumberEvent> {
-    private final ConfigurableApplicationContext context;
+    private final AuthState authState;
 
     @Override
     public void onApplicationEvent(GetPhoneNumberEvent event) {
         handle(
-                "Enter phone number", "phoneNumber", context,
-                result -> new PhoneNumber(result.get()),
+                "Enter phone number",
+                result -> authState.setPhoneNumber(result.get()),
                 event.getLatch()
                 );
     }
