@@ -4,6 +4,7 @@ package com.ttt.app.telegram.handler;
 import com.ttt.app.config.ApiConfig;
 import com.ttt.app.telegram.AuthState;
 import com.ttt.app.telegram.event.GetAuthCodeEvent;
+import com.ttt.app.telegram.event.GetPasswordEvent;
 import com.ttt.app.telegram.event.GetPhoneNumberEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
@@ -59,6 +60,14 @@ public class UpdateAuthorizationStateHandler {
                 latch.await();
                 sendRequest(new TdApi.CheckAuthenticationCode(authState.getAuthCode()));
                 authState.setAuthCode("");
+            }
+
+            case TdApi.AuthorizationStateWaitPassword.CONSTRUCTOR -> {
+                CountDownLatch latch = new CountDownLatch(1);
+                context.publishEvent(new GetPasswordEvent(latch));
+                latch.await();
+                sendRequest(new TdApi.CheckAuthenticationPassword(authState.getPassword()));
+                authState.setPassword("");
             }
         }
     }
