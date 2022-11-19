@@ -13,4 +13,5 @@ public class AuthState {
     private String phoneNumber;
     private String authCode;
     private String password;
+    private boolean isAuthorized = false;
 }

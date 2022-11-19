@@ -3,6 +3,7 @@ package com.ttt.app.telegram.handler;
 
 import com.ttt.app.config.ApiConfig;
 import com.ttt.app.telegram.AuthState;
+import com.ttt.app.telegram.event.AuthStateReadyEvent;
 import com.ttt.app.telegram.event.GetAuthCodeEvent;
 import com.ttt.app.telegram.event.GetPasswordEvent;
 import com.ttt.app.telegram.event.GetPhoneNumberEvent;
@@ -33,6 +34,7 @@ public class UpdateAuthorizationStateHandler {
         }
         switch (authState.getState().getConstructor()) {
             case TdApi.AuthorizationStateWaitTdlibParameters.CONSTRUCTOR -> {
+                authState.setAuthorized(false);
                 TdApi.SetTdlibParameters request = new TdApi.SetTdlibParameters();
                 request.databaseDirectory = "tdlib";
                 request.useMessageDatabase = true;
@@ -61,13 +63,19 @@ public class UpdateAuthorizationStateHandler {
                 sendRequest(new TdApi.CheckAuthenticationCode(authState.getAuthCode()));
                 authState.setAuthCode("");
             }
-
             case TdApi.AuthorizationStateWaitPassword.CONSTRUCTOR -> {
                 CountDownLatch latch = new CountDownLatch(1);
                 context.publishEvent(new GetPasswordEvent(latch));
                 latch.await();
                 sendRequest(new TdApi.CheckAuthenticationPassword(authState.getPassword()));
                 authState.setPassword("");
+            }
+            case TdApi.AuthorizationStateReady.CONSTRUCTOR -> {
+                if (authState.isAuthorized()) {
+                    return;
+                }
+                authState.setAuthorized(true);
+                context.publishEvent(new AuthStateReadyEvent(""));
             }
         }
     }
