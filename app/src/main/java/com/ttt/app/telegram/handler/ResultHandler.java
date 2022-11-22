@@ -1,6 +1,7 @@
 package com.ttt.app.telegram.handler;
 
 import com.ttt.app.telegram.event.UpdateAuthorizationStateEvent;
+import com.ttt.app.telegram.event.UpdateChatEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.drinkless.tdlib.Client;
@@ -22,6 +23,13 @@ public class ResultHandler implements Client.ResultHandler {
                     TdApi.AuthorizationState authorizationState =
                             ((TdApi.UpdateAuthorizationState) object).authorizationState;
                     context.publishEvent(new UpdateAuthorizationStateEvent(authorizationState));
+                }
+                case TdApi.UpdateNewChat.CONSTRUCTOR,
+                        TdApi.UpdateChatLastMessage.CONSTRUCTOR,
+                        TdApi.UpdateChatPosition.CONSTRUCTOR,
+                        TdApi.UpdateChatDraftMessage.CONSTRUCTOR -> {
+                    TdApi.Chat chat = ((TdApi.UpdateNewChat) object).chat;
+                    context.publishEvent(new UpdateChatEvent(chat));
                 }
                 default -> log.info("Skip event " + object);
             }
