@@ -18,13 +18,14 @@ public class ChatSetFetcher {
 
     public synchronized void getMainChatSet(int limit) {
         Client client = context.getBean(Client.class);
-        TdApi.LoadChats request = new TdApi.LoadChats(new TdApi.ChatListMain(), 0);
+        TdApi.LoadChats request = new TdApi.LoadChats(new TdApi.ChatListMain(), limit);
         client.send(request, new Handler(limit));
     }
 
     @RequiredArgsConstructor
     private class Handler implements Client.ResultHandler {
         private final int limit;
+
         @Override
         public void onResult(TdApi.Object object) {
             switch (object.getConstructor()) {
@@ -32,6 +33,12 @@ public class ChatSetFetcher {
                     if (((TdApi.Error) object).code == 404) {
                         synchronized (chatState.getChatSet()) {
                             chatState.setHaveFullChatList(true);
+                            chatState.getChatSet()
+                                    .forEach(
+                                            chat -> context.publishEvent(
+                                                    new MessageEvent("Found channel " + chat.title + ":" + chat.id)
+                                            )
+                                    );
                         }
                     } else {
                         context.publishEvent(new MessageEvent(object.toString()));

@@ -1,5 +1,6 @@
 package com.ttt.app.telegram.handler;
 
+import com.ttt.app.telegram.ChatSetFetcher;
 import com.ttt.app.telegram.event.AuthStateReadyEvent;
 import com.ttt.app.view.event.MessageEvent;
 import lombok.RequiredArgsConstructor;
@@ -13,9 +14,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class AuthStateReadyHandler implements ApplicationListener<AuthStateReadyEvent> {
     private final ApplicationContext context;
+    private final ChatSetFetcher fetcher;
 
     @Override
     public void onApplicationEvent(AuthStateReadyEvent event) {
         context.publishEvent(new MessageEvent("Telegram connection is ready"));
+        fetcher.getMainChatSet(200);
     }
 }
