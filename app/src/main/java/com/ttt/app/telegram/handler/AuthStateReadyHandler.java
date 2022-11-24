@@ -1,5 +1,6 @@
 package com.ttt.app.telegram.handler;
 
+import com.ttt.app.config.ChatConfig;
 import com.ttt.app.telegram.ChatSetFetcher;
 import com.ttt.app.telegram.event.AuthStateReadyEvent;
 import com.ttt.app.view.event.MessageEvent;
@@ -15,10 +16,11 @@ import org.springframework.stereotype.Component;
 public class AuthStateReadyHandler implements ApplicationListener<AuthStateReadyEvent> {
     private final ApplicationContext context;
     private final ChatSetFetcher fetcher;
+    private final ChatConfig chatConfig;
 
     @Override
     public void onApplicationEvent(AuthStateReadyEvent event) {
         context.publishEvent(new MessageEvent("Telegram connection is ready"));
-        fetcher.getMainChatSet(200);
+        fetcher.getMainChatSet(chatConfig.getLimit());
     }
 }
