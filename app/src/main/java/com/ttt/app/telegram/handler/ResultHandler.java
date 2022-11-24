@@ -1,6 +1,7 @@
 package com.ttt.app.telegram.handler;
 
 import com.ttt.app.telegram.ChatState;
+import com.ttt.app.telegram.event.NewMessageEvent;
 import com.ttt.app.telegram.event.UpdateAuthorizationStateEvent;
 import com.ttt.app.telegram.event.UpdateChatEvent;
 import lombok.RequiredArgsConstructor;
@@ -44,6 +45,14 @@ public class ResultHandler implements Client.ResultHandler {
                     long chatId = ((TdApi.UpdateChatDraftMessage) object).chatId;
                     TdApi.Chat chat = chatState.getChatMap().get(chatId);
                     context.publishEvent(new UpdateChatEvent(chat));
+                }
+                case TdApi.UpdateNewMessage.CONSTRUCTOR -> {
+                    TdApi.UpdateNewMessage updateNewMessage = (TdApi.UpdateNewMessage) object;
+                    TdApi.Message message = updateNewMessage.message;
+                    long chatId = message.chatId;
+                    if (chatId == -1001842985312L) {
+                        context.publishEvent(new NewMessageEvent(updateNewMessage));
+                    }
                 }
                 default -> log.info("Skip event " + object);
             }
