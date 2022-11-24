@@ -1,10 +1,10 @@
 package com.ttt.app.telegram.handler;
 
+import com.ttt.app.config.ChatConfig;
 import com.ttt.app.telegram.ChatState;
 import com.ttt.app.telegram.event.UpdateChatEvent;
 import lombok.RequiredArgsConstructor;
 import org.drinkless.tdlib.TdApi;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
@@ -12,11 +12,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class UpdateChatHandler implements ApplicationListener<UpdateChatEvent> {
     private final ChatState chatState;
-    private final ApplicationContext context;
+    private final ChatConfig chatConfig;
     @Override
     public void onApplicationEvent(UpdateChatEvent event) {
         TdApi.Chat chat = event.getChat();
-        if (chat.title.toLowerCase().contains("lcc")) {
+        if (chat.title.toLowerCase().contains(chatConfig.getTitlePart())) {
             chatState.getChatSet().add(chat);
             chatState.getChatMap().put(chat.id, chat);
         }

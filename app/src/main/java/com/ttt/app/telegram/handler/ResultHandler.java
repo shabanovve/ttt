@@ -1,5 +1,6 @@
 package com.ttt.app.telegram.handler;
 
+import com.ttt.app.config.ChatConfig;
 import com.ttt.app.telegram.ChatState;
 import com.ttt.app.telegram.event.NewMessageEvent;
 import com.ttt.app.telegram.event.UpdateAuthorizationStateEvent;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Component;
 public class ResultHandler implements Client.ResultHandler {
     private final ConfigurableApplicationContext context;
     private final ChatState chatState;
+    private final ChatConfig chatConfig;
 
     @Override
     public void onResult(TdApi.Object object) {
@@ -50,7 +52,7 @@ public class ResultHandler implements Client.ResultHandler {
                     TdApi.UpdateNewMessage updateNewMessage = (TdApi.UpdateNewMessage) object;
                     TdApi.Message message = updateNewMessage.message;
                     long chatId = message.chatId;
-                    if (chatId == -1001842985312L) {
+                    if (chatId == chatConfig.getId()) {
                         context.publishEvent(new NewMessageEvent(updateNewMessage));
                     }
                 }
