@@ -17,6 +17,9 @@
         <java.version>17</java.version>
         <repackage.classifier/>
         <spring-native.version>0.12.1</spring-native.version>
+        <gluonfx.maven.plugin.version>1.0.16</gluonfx.maven.plugin.version>
+        <gluonfx.target>host</gluonfx.target>
+        <main.class>com.ttt.app.AppApplication</main.class>
     </properties>
     <dependencies>
         <dependency>
@@ -95,6 +98,26 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.gluonhq</groupId>
+                <artifactId>gluonfx-maven-plugin</artifactId>
+                <version>${gluonfx.maven.plugin.version}</version>
+                <configuration>
+                    <target>${gluonfx.target}</target>
+                    <mainClass>${main.class}</mainClass>
+                    <jniList>
+                        <list>org.drinkless.tdlib.Client</list>
+                    </jniList>
+                    <nativeImageArgs>
+                        <arg>--add-exports=org.graalvm.nativeimage.builder/com.oracle.svm.core.jdk=ALL-UNNAMED</arg>
+                        <arg>--add-opens=java.base/jdk.internal.misc=ALL-UNNAMED</arg>
+                    </nativeImageArgs>
+                    <linkerArgs>
+                        <arg>${JAVA_HOME}/lib/libmanagement_ext.so</arg>
+                        <arg>${JAVA_HOME}/lib/server/libjvm.so</arg>
+                    </linkerArgs>
+                </configuration>
             </plugin>
         </plugins>
     </build>
