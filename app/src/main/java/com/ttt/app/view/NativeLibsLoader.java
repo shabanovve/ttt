@@ -1,22 +1,28 @@
 package com.ttt.app.view;
 
+import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.InputStream;
-import java.net.URL;
 import java.nio.file.Files;
 
+@RequiredArgsConstructor
+@Component
 public class NativeLibsLoader {
+    @Value("classpath:/libtdjni.so")
+    Resource resourceFile;
     @SneakyThrows
     public void load(){
         String libName = "libtdjni.so"; // The name of the file in resources/ dir
-        URL url = NativeLibsLoader.class.getResource("/" + libName);
         File tmpDir = Files.createTempDirectory("ttt").toFile();
         tmpDir.deleteOnExit();
         File nativeLibTmpFile = new File(tmpDir, libName);
         nativeLibTmpFile.deleteOnExit();
-        try (InputStream in = url.openStream()) {
+        try (InputStream in = resourceFile.getInputStream()) {
             Files.copy(in, nativeLibTmpFile.toPath());
         }
         System.load(nativeLibTmpFile.getAbsolutePath());
