@@ -1,7 +1,7 @@
 package com.ttt.app;
 
-import com.ttt.app.view.MainWindow;
-import com.ttt.app.view.MessageStringView;
+import com.ttt.app.javafxui.view.MainWindow;
+import com.ttt.app.javafxui.view.MessageStringView;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;

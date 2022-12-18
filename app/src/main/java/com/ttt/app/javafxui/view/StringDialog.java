@@ -1,4 +1,4 @@
-package com.ttt.app.view;
+package com.ttt.app.javafxui.view;
 
 import javafx.application.Platform;
 import javafx.geometry.Pos;
