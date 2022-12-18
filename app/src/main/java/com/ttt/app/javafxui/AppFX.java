@@ -1,7 +1,6 @@
 package com.ttt.app.javafxui;
 
 import com.ttt.app.AppApplication;
-import com.ttt.app.javafxui.view.NativeLibsLoader;
 import com.ttt.app.telegram.TelegramService;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -20,7 +19,6 @@ public class AppFX extends Application {
     public void start(Stage stage) {
         applicationContext.getBeanFactory().registerSingleton("stage", stage);
         applicationContext.publishEvent(new StageReadyEvent(stage));
-        applicationContext.getBean(NativeLibsLoader.class).load();
         applicationContext.getBean(TelegramService.class).start();
     }
     @Override
