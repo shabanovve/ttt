@@ -1,7 +1,7 @@
 package com.ttt.app.telegram.handler;
 
-import com.ttt.app.config.ChatConfig;
 import com.ttt.app.telegram.ChatState;
+import com.ttt.app.telegram.config.ChatConfig;
 import com.ttt.app.telegram.event.NewMessageEvent;
 import com.ttt.app.telegram.event.UpdateAuthorizationStateEvent;
 import com.ttt.app.telegram.event.UpdateChatEvent;

@@ -1,7 +1,7 @@
 package com.ttt.app.telegram.handler;
 
-import com.ttt.app.config.ChatConfig;
 import com.ttt.app.telegram.ChatSetFetcher;
+import com.ttt.app.telegram.config.ChatConfig;
 import com.ttt.app.telegram.event.AuthStateReadyEvent;
 import com.ttt.app.view.event.MessageEvent;
 import lombok.RequiredArgsConstructor;

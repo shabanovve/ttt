@@ -1,8 +1,8 @@
 package com.ttt.app;
 
-import com.ttt.app.config.ChatConfig;
-import com.ttt.app.config.TelegramApiConfig;
-import com.ttt.app.config.TelegramLogConfig;
+import com.ttt.app.telegram.config.ChatConfig;
+import com.ttt.app.telegram.config.TelegramApiConfig;
+import com.ttt.app.telegram.config.TelegramLogConfig;
 import javafx.application.Application;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
