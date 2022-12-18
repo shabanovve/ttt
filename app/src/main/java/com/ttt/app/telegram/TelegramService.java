@@ -1,5 +1,6 @@
 package com.ttt.app.telegram;
 
+import com.ttt.app.javafxui.view.NativeLibsLoader;
 import com.ttt.app.telegram.event.MessageEvent;
 import com.ttt.app.telegram.handler.DefaultExceptionHandler;
 import com.ttt.app.telegram.handler.ResultHandler;
@@ -22,6 +23,7 @@ public class TelegramService {
     public void start() {
         String message = "Connecting to telegram";
         log.info(message);
+        context.getBean(NativeLibsLoader.class).load();
         context.publishEvent(new MessageEvent(message));
         Client client = Client.create(resultHandler, updateExceptionHandler, defaultExceptionHandler);
         context.getBeanFactory().registerSingleton("client", client);
