@@ -1,5 +1,6 @@
-package com.ttt.app;
+package com.ttt.app.javafxui;
 
+import com.ttt.app.AppFX;
 import com.ttt.app.javafxui.view.MainWindow;
 import com.ttt.app.javafxui.view.MessageStringView;
 import lombok.RequiredArgsConstructor;
