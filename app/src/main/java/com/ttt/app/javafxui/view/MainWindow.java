@@ -1,4 +1,4 @@
-package com.ttt.app.view;
+package com.ttt.app.javafxui.view;
 
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -26,8 +26,6 @@ public class MainWindow {
         stage.setScene(scene);
         stage.setTitle("LCC ttt app");
         stage.show();
-        for (int i = 0; i < 100; i++) {
-        }
     }
 
     private void createVBox() {

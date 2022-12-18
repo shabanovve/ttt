@@ -1,7 +1,7 @@
 package com.ttt.app;
 
+import com.ttt.app.javafxui.view.NativeLibsLoader;
 import com.ttt.app.telegram.TelegramService;
-import com.ttt.app.view.NativeLibsLoader;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;

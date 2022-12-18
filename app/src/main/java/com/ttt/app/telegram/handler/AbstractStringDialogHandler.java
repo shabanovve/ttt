@@ -1,6 +1,6 @@
 package com.ttt.app.telegram.handler;
 
-import com.ttt.app.view.StringDialog;
+import com.ttt.app.javafxui.view.StringDialog;
 import lombok.SneakyThrows;
 import lombok.extern.log4j.Log4j2;
 
