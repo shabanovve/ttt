@@ -19,6 +19,9 @@ Then, you can run the app as follows:
 ```
 $ target/cliapp
 ```
+NB: The javafx version doesn't work now after build into native image.
+It throws `RuntimeException: No toolkit found`
+
 --------------
 ### Workflow to build native executable file
 - Build TDLib (telegram api library)
