@@ -1,7 +1,7 @@
 package com.ttt.app.telegram.handler;
 
+import com.ttt.app.telegram.event.MessageEvent;
 import com.ttt.app.telegram.event.NewMessageEvent;
-import com.ttt.app.view.event.MessageEvent;
 import lombok.RequiredArgsConstructor;
 import org.drinkless.tdlib.TdApi;
 import org.springframework.context.ApplicationContext;

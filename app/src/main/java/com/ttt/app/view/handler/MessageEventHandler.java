@@ -1,7 +1,7 @@
 package com.ttt.app.view.handler;
 
+import com.ttt.app.telegram.event.MessageEvent;
 import com.ttt.app.view.MessageStringView;
-import com.ttt.app.view.event.MessageEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;

@@ -1,7 +1,7 @@
 package com.ttt.app.telegram.handler;
 
+import com.ttt.app.telegram.event.MessageEvent;
 import com.ttt.app.telegram.event.RepeatAuthRequestEvent;
-import com.ttt.app.view.event.MessageEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.drinkless.tdlib.Client;
