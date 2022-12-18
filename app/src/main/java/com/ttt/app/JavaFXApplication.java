@@ -10,7 +10,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 
 @EnableConfigurationProperties({TelegramApiConfig.class, TelegramLogConfig.class, ChatConfig.class})
 @SpringBootApplication
-public class AppApplication {
+public class JavaFXApplication {
 	public static void main(String[] args) {
 		Application.launch(AppFX.class);
 	}

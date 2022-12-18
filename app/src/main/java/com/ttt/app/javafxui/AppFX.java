@@ -1,6 +1,6 @@
 package com.ttt.app.javafxui;
 
-import com.ttt.app.AppApplication;
+import com.ttt.app.JavaFXApplication;
 import com.ttt.app.telegram.TelegramService;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -13,7 +13,7 @@ public class AppFX extends Application {
     private ConfigurableApplicationContext applicationContext;
     @Override
     public void init() {
-        applicationContext = new SpringApplicationBuilder(AppApplication.class).run();
+        applicationContext = new SpringApplicationBuilder(JavaFXApplication.class).run();
     }
     @Override
     public void start(Stage stage) {
