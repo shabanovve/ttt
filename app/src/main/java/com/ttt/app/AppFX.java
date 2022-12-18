@@ -27,7 +27,7 @@ public class AppFX extends Application {
         applicationContext.close();
         Platform.exit();
     }
-    static class StageReadyEvent extends ApplicationEvent {
+    public static class StageReadyEvent extends ApplicationEvent {
         public StageReadyEvent(Stage stage) {
             super(stage);
         }
