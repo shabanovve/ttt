@@ -1,4 +1,4 @@
-package com.ttt.app.view.event;
+package com.ttt.app.telegram.event;
 
 import org.springframework.context.ApplicationEvent;
 
