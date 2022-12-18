@@ -1,4 +1,4 @@
-package com.ttt.app.config;
+package com.ttt.app.telegram.config;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,8 +1,8 @@
 package com.ttt.app.telegram.handler;
 
 
-import com.ttt.app.config.TelegramApiConfig;
 import com.ttt.app.telegram.AuthState;
+import com.ttt.app.telegram.config.TelegramApiConfig;
 import com.ttt.app.telegram.event.AuthStateReadyEvent;
 import com.ttt.app.telegram.event.GetAuthCodeEvent;
 import com.ttt.app.telegram.event.GetPasswordEvent;

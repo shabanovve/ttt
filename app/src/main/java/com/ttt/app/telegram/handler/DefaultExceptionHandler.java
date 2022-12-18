@@ -1,6 +1,6 @@
 package com.ttt.app.telegram.handler;
 
-import com.ttt.app.config.TelegramLogConfig;
+import com.ttt.app.telegram.config.TelegramLogConfig;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.drinkless.tdlib.Client;
