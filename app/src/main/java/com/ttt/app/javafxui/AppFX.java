@@ -1,5 +1,6 @@
-package com.ttt.app;
+package com.ttt.app.javafxui;
 
+import com.ttt.app.AppApplication;
 import com.ttt.app.javafxui.view.NativeLibsLoader;
 import com.ttt.app.telegram.TelegramService;
 import javafx.application.Application;
@@ -27,7 +28,7 @@ public class AppFX extends Application {
         applicationContext.close();
         Platform.exit();
     }
-    public static class StageReadyEvent extends ApplicationEvent {
+    static class StageReadyEvent extends ApplicationEvent {
         public StageReadyEvent(Stage stage) {
             super(stage);
         }

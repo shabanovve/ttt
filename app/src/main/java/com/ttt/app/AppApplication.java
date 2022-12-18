@@ -1,5 +1,6 @@
 package com.ttt.app;
 
+import com.ttt.app.javafxui.AppFX;
 import com.ttt.app.telegram.config.ChatConfig;
 import com.ttt.app.telegram.config.TelegramApiConfig;
 import com.ttt.app.telegram.config.TelegramLogConfig;
