@@ -1,4 +1,4 @@
-package com.ttt.app.telegram.handler;
+package com.ttt.app.telegram.service;
 
 
 import com.ttt.app.telegram.AuthState;
@@ -22,7 +22,7 @@ import java.util.concurrent.CountDownLatch;
 @SuppressWarnings("unused")
 @RequiredArgsConstructor
 @Component
-public class UpdateAuthorizationStateHandler {
+public class UpdateAuthorizationStateService {
     private final ApplicationContext context;
     private final AuthorizationRequestHandlerImpl authorizationRequestHandler;
     private final TelegramApiConfig telegramApiConfig;
