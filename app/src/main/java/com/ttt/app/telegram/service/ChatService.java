@@ -1,5 +1,6 @@
-package com.ttt.app.telegram;
+package com.ttt.app.telegram.service;
 
+import com.ttt.app.telegram.ChatState;
 import com.ttt.app.telegram.event.MessageEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Log4j2
 @RequiredArgsConstructor
 @Component
-public class ChatSetFetcher {
+public class ChatService {
     private final ApplicationContext context;
     private final ChatState chatState;
 
