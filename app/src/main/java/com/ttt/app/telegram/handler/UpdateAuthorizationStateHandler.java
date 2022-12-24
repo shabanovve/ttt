@@ -7,6 +7,7 @@ import com.ttt.app.telegram.event.AuthStateReadyEvent;
 import com.ttt.app.telegram.event.GetAuthCodeEvent;
 import com.ttt.app.telegram.event.GetPasswordEvent;
 import com.ttt.app.telegram.event.GetPhoneNumberEvent;
+import com.ttt.app.telegram.handler.impl.AuthorizationRequestHandlerImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.log4j.Log4j2;
@@ -23,7 +24,7 @@ import java.util.concurrent.CountDownLatch;
 @Component
 public class UpdateAuthorizationStateHandler {
     private final ApplicationContext context;
-    private final AuthorizationRequestHandler authorizationRequestHandler;
+    private final AuthorizationRequestHandlerImpl authorizationRequestHandler;
     private final TelegramApiConfig telegramApiConfig;
     private final AuthState authState;
 
