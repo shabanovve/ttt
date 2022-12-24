@@ -1,8 +1,7 @@
-package com.ttt.app.telegram.handler.impl;
+package com.ttt.app.javafxui.view.handler;
 
 import com.ttt.app.telegram.AuthState;
 import com.ttt.app.telegram.event.GetPhoneNumberEvent;
-import com.ttt.app.telegram.handler.AbstractStringDialogHandler;
 import com.ttt.app.telegram.handler.GetPhoneNumberHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
