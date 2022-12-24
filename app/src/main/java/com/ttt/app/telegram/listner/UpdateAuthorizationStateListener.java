@@ -1,4 +1,4 @@
-package com.ttt.app.telegram.handler;
+package com.ttt.app.telegram.listner;
 
 import com.ttt.app.telegram.event.UpdateAuthorizationStateEvent;
 import com.ttt.app.telegram.service.UpdateAuthorizationStateService;
