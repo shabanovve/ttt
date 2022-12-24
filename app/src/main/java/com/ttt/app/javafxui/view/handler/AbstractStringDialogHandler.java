@@ -1,4 +1,4 @@
-package com.ttt.app.telegram.handler;
+package com.ttt.app.javafxui.view.handler;
 
 import com.ttt.app.javafxui.view.StringDialog;
 import lombok.SneakyThrows;

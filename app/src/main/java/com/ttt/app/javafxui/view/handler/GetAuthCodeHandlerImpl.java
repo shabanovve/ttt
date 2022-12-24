@@ -1,8 +1,7 @@
-package com.ttt.app.telegram.handler.impl;
+package com.ttt.app.javafxui.view.handler;
 
 import com.ttt.app.telegram.AuthState;
 import com.ttt.app.telegram.event.GetAuthCodeEvent;
-import com.ttt.app.telegram.handler.AbstractStringDialogHandler;
 import com.ttt.app.telegram.handler.GetAuthCodeHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
