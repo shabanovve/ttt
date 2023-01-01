@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class StageInitializer implements ApplicationListener<AppFX.StageReadyEvent> {
     private final MainWindow mainWindow;
-    private final MessageStringView  messageStringView;
+    private final MessageStringView messageStringView;
     @Override
     public void onApplicationEvent(AppFX.StageReadyEvent event) {
         mainWindow.create();
