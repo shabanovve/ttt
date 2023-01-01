@@ -1,6 +1,5 @@
 package com.ttt.app.telegram;
 
-import com.ttt.app.javafxui.view.NativeLibsLoader;
 import com.ttt.app.telegram.event.MessageEvent;
 import com.ttt.app.telegram.handler.DefaultExceptionHandler;
 import com.ttt.app.telegram.handler.ResultHandler;
@@ -17,7 +16,7 @@ import org.springframework.stereotype.Component;
 public class TelegramService {
     private final ResultHandler resultHandler;
     private final UpdateExceptionHandler updateExceptionHandler;
-    private final DefaultExceptionHandler  defaultExceptionHandler;
+    private final DefaultExceptionHandler defaultExceptionHandler;
     private final ConfigurableApplicationContext context;
 
     public void start() {
