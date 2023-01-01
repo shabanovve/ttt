@@ -1,4 +1,4 @@
-package com.ttt.app.javafxui.view;
+package com.ttt.app.telegram;
 
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
