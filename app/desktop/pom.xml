@@ -21,7 +21,7 @@
         <gluonfx.maven.plugin.version>1.0.16</gluonfx.maven.plugin.version>
         <gluonfx.target>host</gluonfx.target>
         <javafx.maven.plugin.version>0.0.8</javafx.maven.plugin.version>
-        <main.class>com.ttt.app.JavaFXApplication</main.class>
+        <main.class>JavaFXApplication</main.class>
     </properties>
 
     <dependencies>
@@ -53,6 +53,11 @@
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
             <version>19</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ttt</groupId>
+            <artifactId>telegram-service</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
