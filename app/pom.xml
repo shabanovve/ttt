@@ -5,6 +5,7 @@
     <modules>
         <module>desktop</module>
         <module>telegram-service</module>
+        <module>cliapp</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
