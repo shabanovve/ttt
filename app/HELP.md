@@ -23,21 +23,4 @@ NB: The javafx version doesn't work now after build into native image.
 It throws `RuntimeException: No toolkit found`
 
 --------------
-### Workflow to build native executable file
-- Build TDLib (telegram api library)
-- Pack .so file into jar
-```
-    cd td/tdlib
-    jar cMf tdlib.jar -C bin .
-```
-- Push jar into maven local repository
-  (run inside cliapp directory)
-```
-./mvnw install:install-file \
-   -Dfile=telegram.api/td/tdlib/tdlib.jar \
-   -DgroupId=tdlib  \
-   -DartifactId=tdlib \
-   -Dversion=0.0.1-SNAPSHOT \
-   -Dpackaging=jar \ 
-   -DgeneratePom=true
-```
+
